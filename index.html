@@ -25,60 +25,164 @@
     </style>
 </head>
 <script>
-    function initialize(){
-    grid1 = getElementById(grid1);
-    grid2 = getElementById(grid2);
-    grid3 = getElementById(grid3);
-    grid4 = getElementById(grid4);
-    grid5 = getElementById(grid5);
-    grid6 = getElementById(grid6);
-    grid7 = getElementById(grid7);
-    grid8 = getElementById(grid8);
-    grid9 = getElementById(grid9);
-    grid10 = getElementById(grid10);
-    grid11 = getElementById(grid11);
-    grid12 = getElementById(grid12);
-    grid13 = getElementById(grid13);
-    grid14 = getElementById(grid14);
-    grid15 = getElementById(grid15);
-    grid16 = getElementById(grid16);
 
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
+    function initialize() {
+        randomize();
     }
-    function changeImg(num){
-    
+
+    function randomize() {
+        x = 100;
+        while(x > 0) {
+        var randomNum = Math.floor(Math.random() * arr.length);
+        var randomNum2 = Math.floor(Math.random() * arr.length);
+        var tempNum = arr[randomNum];
+        var tempNum2 = arr[randomNum2];
+        console.log(tempNum2);
+            console.log(tempNum);
+        while (tempNum == tempNum2) {
+            randomNum2 = Math.floor(Math.random() * arr.length);
+            tempNum2 = arr[randomNum2];
+            console.log(tempNum2);
+            console.log(tempNum);
+        }
+        arr[randomNum] = tempNum2;
+        arr[randomNum2] = tempNum;
+        // const tempNum2 = Math.floor(Math.random() * arr.length);
+        x--;
+        }
+        console.log(arr);
+        console.log(arr[0]);
+        console.log(arr[1]);
     }
+
+    function revealImage(num) {
+        console.log(arr[1]);
+        if (arr[num] == 1 || arr[num] == 2) {
+            tempText = "mushroom.png"
+        }
+        if (arr[num] == 3 || arr[num] == 4) {
+            tempText = "fireflower.png"
+        }
+        if (arr[num] == 5 || arr[num] == 6) {
+            tempText = "iceflower.png"
+        }  
+        if (arr[num] == 7 || arr[num] == 8) {
+            tempText = "leaf.png"
+        } 
+        if (arr[num] == 9 || arr[num] == 10) {
+            tempText = "lifemushroom.png"
+        }
+        if (arr[num] == 11|| arr[num] == 12) {
+            tempText = "penguin.png"
+        }
+        if (arr[num] == 13 || arr[num] == 14) {
+            tempText = "propeller.png"
+        }  
+        if (arr[num] == 15 || arr[num] == 16) {
+            tempText = "star.png"
+        }   
+        
+        if (num == 0) {
+        let card1 = document.getElementById("grid1");
+        card1.src = tempText;   
+        }
+        if (num == 1) {
+        let card2 = document.getElementById("grid2");
+        card2.src = tempText;   
+        }
+        if (num == 2) {
+        let card3 = document.getElementById("grid3");
+        card3.src = tempText;   
+        }
+        if (num == 3) {
+        let card4 = document.getElementById("grid4");
+        card4.src = tempText;   
+        }
+        if (num == 4) {
+        let card5 = document.getElementById("grid5");
+        card5.src = tempText;   
+        }
+        if (num == 5) {
+        let card6 = document.getElementById("grid6");
+        card6.src = tempText;   
+        }
+        if (num == 6) {
+        let card7 = document.getElementById("grid7");
+        card7.src = tempText;   
+        }
+        if (num == 7) {
+        let card8 = document.getElementById("grid8");
+        card8.src = tempText;   
+        }
+        if (num == 8) {
+        let card9 = document.getElementById("grid9");
+        card9.src = tempText;   
+        }
+        if (num == 9) {
+        let card10 = document.getElementById("grid10");
+        card10.src = tempText;   
+        }
+        if (num == 10) {
+        let card11 = document.getElementById("grid11");
+        card11.src = tempText;   
+        }
+        if (num == 11) {
+        let card12 = document.getElementById("grid12");
+        card12.src = tempText;   
+        }
+        if (num == 12) {
+        let card13 = document.getElementById("grid13");
+        card13.src = tempText;   
+        }
+        if (num == 13) {
+        let card14 = document.getElementById("grid14");
+        card14.src = tempText;   
+        }
+        if (num == 14) {
+        let card15 = document.getElementById("grid15");
+        card15.src = tempText;   
+        }
+        if (num == 15) {
+        let card16 = document.getElementById("grid16");
+        card16.src = tempText;   
+        }
+  
+    }
+
 </script>
 <body onload = initialize();>
     <h1> Welcome to the Mushroom House! </h1>
     <div class="grid-container">
-        <div class="grid1"><img src = "mushroom.png" height = 211px width= 211px></div>
-        <div class="grid2"><img src = "image1.gif"></div>
-        <div class="grid3"><img src = "image1.gif"></div>
-        <div class="grid4"><img src = "image1.gif"></div>
-        <div class="grid5"><img src = "image1.gif"></div>
-        <div class="grid6"><img src = "image1.gif"></div>
-        <div class="grid7"><img src = "image1.gif"></div>
-        <div class="grid8"><img src = "image1.gif"></div>
-        <div class="grid9"><img src = "image1.gif"></div>
-        <div class="grid10"><img src = "image1.gif"></div>
-        <div class="grid11"><img src = "image1.gif"></div>
-        <div class="grid12"><img src = "image1.gif"></div>
-        <div class="grid13"><img src = "image1.gif"></div>
-        <div class="grid14"><img src = "image1.gif"></div>
-        <div class="grid15"><img src = "image1.gif"></div>
-        <div class="grid16"><img src = "image1.gif"></div>
+        <div class = "grid1" onclick = revealImage(0);><img id = "grid1" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(1);><img id = "grid2" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(2);><img id = "grid3" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(3);><img id = "grid4" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(4);><img id = "grid5" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(5);><img id = "grid6" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(6);><img id = "grid7" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(7);><img id = "grid8" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(8);><img id = "grid9" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(9);><img id = "grid10" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(10);><img id = "grid11" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(11);><img id = "grid12" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(12);><img id = "grid13" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(13);><img id = "grid14" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(14);><img id = "grid15" src = "image1.gif" height = 211px width= 211px></div>
+        <div class = "grid1" onclick = revealImage(15);><img id = "grid16" src = "image1.gif" height = 211px width= 211px></div>
+
       </div>
       
 
-      <img src = "mushroom.png" height = 211px width= 211px>
+      <!-- <img src = "mushroom.png" id = "mushroom.png" height = 211px width= 211px>
       <img src = "fireflower.png" height = 211px width = 211px>
       <img src = "iceflower.png" height = 211px width = 211px>
       <img src = "star.png" height = 211px width = 211px>
       <img src = "leaf.png" height = 211px width = 211px>
       <img src = "lifemushroom.png" height = 211px width = 211px>
       <img src = "penguin.png" height = 211px width = 211px>
-      <img src = "propeller.png" height = 211px width = 211px>
+      <img src = "propeller.png" height = 211px width = 211px> -->
       
 </body>
 </html>
