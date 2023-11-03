@@ -44,6 +44,8 @@
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     var flipCounter = 0;
     var prevNum = 0;
+    var tempNum3 = 0;
+    var timedOut = false;
 
     function initialize() {
         randomize();
@@ -65,18 +67,7 @@
         flipped14 = false;
         flipped15 = false;
         flipped16 = false;
-        
-
-        let mushroom1 = document.getElementById("mushroom1.png");
-        console.log(mushroom1);
-        let mushroom2= document.getElementById("mushroom2.png");
-        console.log(mushroom2)
-        if (mushroom1.src == mushroom2.src) {
-            console.log("yay");
-        }   else    {
-            console.log("boo");
-        }
-
+    
     }
     function isEven (num) {
         if(num % 2 == 0){
@@ -106,9 +97,17 @@
     }
 
     function revealImage(num) {
+        
+        if (!timedOut) {
+            if (flipCounter == 1 || flipCounter == 2) {
+            timedOut = true;
+            setTimeout(timedIn, 500);
+            console.log(timedOut);
+            }
         if (flipCounter == 0) {
             prevNum = num;
-        }
+        }   
+        tempNum3 = num;
         if (arr[num] == 1 || arr[num] == 2) {
             tempText = "mushroom.png"
         }
@@ -278,8 +277,7 @@
         let card16 = document.getElementById("grid16");
         card16.src = tempText;   
         }
-
-        console.log(flipCounter);
+        
         if (flipCounter == 2) {
             console.log("Previous Number: " + prevNum);
             console.log("Current Number: " + num);
@@ -290,101 +288,111 @@
                 flipCounter = 0;
             }   else    {
                 flipCounter = 0;
-                    if (prevNum == 0|| num == 0) {
-                        let card1 = document.getElementById("grid1");
-                        card1.src = "image1.gif";
-                        flipped1 = false;
-                    }
-                    if (prevNum == 1|| num == 1) {
-                        let card2 = document.getElementById("grid2");
-                        card2.src = "image1.gif";
-                        flipped2 = false;
-                    }
-                    if (prevNum == 2|| num == 2) {
-                        let card3 = document.getElementById("grid3");
-                        card3.src = "image1.gif";
-                        flipped3 = false;
-                    }
-                    if (prevNum == 3 || num == 3) {
-                        let card4 = document.getElementById("grid4");
-                        card4.src = "image1.gif";
-                        flipped4 = false;
-                    }
-                    if (prevNum == 4|| num == 4) {
-                        let card5 = document.getElementById("grid5");
-                        card5.src = "image1.gif";
-                        flipped5 = false;
-                    }
-                    if (prevNum == 5|| num == 5) {
-                        let card6 = document.getElementById("grid6");
-                        card6.src = "image1.gif";
-                        flipped6 = false;
-                    }
-                    if (prevNum == 6|| num == 6) {
-                        let card7 = document.getElementById("grid7");
-                        card7.src = "image1.gif";
-                        flipped7 = false;
-                    }
-                    if (prevNum == 7 || num == 7) {
-                        let card8 = document.getElementById("grid8");
-                        card8.src = "image1.gif";
-                        flipped8 = false;
-                    }
-                    if (prevNum == 8|| num == 8) {
-                        let card9 = document.getElementById("grid9");
-                        card9.src = "image1.gif";
-                        flipped9 = false;
-                    }
-                    if (prevNum == 9|| num == 9) {
-                        let card10 = document.getElementById("grid10");
-                        card10.src = "image1.gif";
-                        flipped10 = false;
-                    }
-                    if (prevNum == 10|| num == 10) {
-                        let card11 = document.getElementById("grid11");
-                        card11.src = "image1.gif";
-                        flipped11 = false;
-                    }
-                    if (prevNum == 11|| num == 11) {
-                        let card12 = document.getElementById("grid12");
-                        card12.src = "image1.gif";
-                        flipped12 = false;
-                    }
-                    if (prevNum == 12|| num == 12) {
-                        let card13 = document.getElementById("grid13");
-                        card13.src = "image1.gif";
-                        flipped13 = false;
-                    }
-                    if (prevNum == 13|| num == 13) {
-                        let card14 = document.getElementById("grid14");
-                        card14.src = "image1.gif";
-                        flipped14 = false;
-                    }
-                    if (prevNum == 14|| num == 14) {
-                        let card15 = document.getElementById("grid15");
-                        card15.src = "image1.gif";
-                        flipped15 = false;
-                    }
-                    if (prevNum == 15|| num == 15) {
-                        let card16 = document.getElementById("grid16");
-                        card16.src = "image1.gif";
-                        flipped16 = false;
-                    }
+                setTimeout(flipCards, 400);
             }
             
             //use index of original array to match cards
         
             flipCounter = 0;
-        }
+        }  
 
+        console.log(timedOut);
         display();
+    }
+    }
 
+    function timedIn() {
+        timedOut = false;
+        console.log(timedOut);
+    }
+    function flipCards() {
+        if (prevNum == 0|| tempNum3 == 0) {
+                let card1 = document.getElementById("grid1");
+                card1.src = "image1.gif";
+                flipped1 = false;
+            }
+            if (prevNum == 1|| tempNum3 == 1) {
+                let card2 = document.getElementById("grid2");
+                card2.src = "image1.gif";
+                flipped2 = false;
+            }
+            if (prevNum == 2|| tempNum3 == 2) {
+                let card3 = document.getElementById("grid3");
+                card3.src = "image1.gif";
+                flipped3 = false;
+            }
+            if (prevNum == 3 || tempNum3 == 3) {
+                let card4 = document.getElementById("grid4");
+                card4.src = "image1.gif";
+                flipped4 = false;
+            }
+            if (prevNum == 4|| tempNum3 == 4) {
+                let card5 = document.getElementById("grid5");
+                card5.src = "image1.gif";
+                flipped5 = false;
+            }
+            if (prevNum == 5|| tempNum3 == 5) {
+                let card6 = document.getElementById("grid6");
+                card6.src = "image1.gif";
+                flipped6 = false;
+            }
+            if (prevNum == 6|| tempNum3 == 6) {
+                let card7 = document.getElementById("grid7");
+                card7.src = "image1.gif";
+                flipped7 = false;
+            }
+            if (prevNum == 7 || tempNum3 == 7) {
+                let card8 = document.getElementById("grid8");
+                card8.src = "image1.gif";
+                flipped8 = false;
+            }
+            if (prevNum == 8|| tempNum3 == 8) {
+                let card9 = document.getElementById("grid9");
+                card9.src = "image1.gif";
+                flipped9 = false;
+            }
+            if (prevNum == 9|| tempNum3 == 9) {
+                let card10 = document.getElementById("grid10");
+                card10.src = "image1.gif";
+                flipped10 = false;
+            }
+            if (prevNum == 10|| tempNum3 == 10) {
+                let card11 = document.getElementById("grid11");
+                card11.src = "image1.gif";
+                flipped11 = false;
+            }
+            if (prevNum == 11|| tempNum3 == 11) {
+                let card12 = document.getElementById("grid12");
+                card12.src = "image1.gif";
+                flipped12 = false;
+            }
+            if (prevNum == 12|| tempNum3 == 12) {
+                let card13 = document.getElementById("grid13");
+                card13.src = "image1.gif";
+                flipped13 = false;
+            }
+            if (prevNum == 13|| tempNum3 == 13) {
+                let card14 = document.getElementById("grid14");
+                card14.src = "image1.gif";
+                flipped14 = false;
+            }
+            if (prevNum == 14|| tempNum3 == 14) {
+                let card15 = document.getElementById("grid15");
+                card15.src = "image1.gif";
+                flipped15 = false;
+            }
+            if (prevNum == 15|| tempNum3 == 15) {
+                let card16 = document.getElementById("grid16");
+                card16.src = "image1.gif";
+                flipped16 = false;
+            }
     }
 
     function display() {
             scoreDisplay = document.getElementById("scoreDisplay");
             scoreDisplay.innerHTML = "Score: " + score + " Flip Counter: " + flipCounter;
     }
+
 </script>
 <body onload = initialize();>
     <h1> "Welcome to the Mushroom House</h1>
@@ -411,11 +419,7 @@
       <div class = "sidebar">
         
       </div>
-      
-
-      <img src = "mushroom.png" id = "mushroom1.png" height = 211px width= 211px>
-      <img src = "mushroom.png" id = "mushroom2.png" height = 211px width= 211px>
-        
+              
       <!-- <img src = "fireflower.png" height = 211px width = 211px>
       <img src = "iceflower.png" height = 211px width = 211px>
       <img src = "star.png" height = 211px width = 211px>
