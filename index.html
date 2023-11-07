@@ -7,35 +7,63 @@
     <title>Document</title>
     
     <style>
+        body {
+            background-image: url(background.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         .grid-container {
             display: grid;
             grid-template-columns: auto auto auto auto;
-            padding: 40px;
             grid-template-rows: auto auto auto auto;
             border-radius: 10px;
-            grid-column-gap: 10px;
-            grid-row-gap: 25px;
-            background-color: black;
+            grid-column-gap: 1%;
+            grid-row-gap: 1%
+        }
+        #toad {
+            height: 20%;
+            width:20%;
+        }
+        .grid1 img {
+            width: 30vw 30vh;
+            height: 30vw 30vh;
         }
         h1 {
             font-weight: bold;
             color: rgb(201, 37, 37);
                         
         }
-        .sidebar{
-            display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: auto auto auto auto;
-            background-color: black;
-            grid-row-gap: 25px;
-            padding: 40px;
-        }
-        #scoreDisplay{
+        #scoreDisplay {
             grid-row-start:1;
             grid-row-end:5;
             grid-column: 1;
         }
-        
+        #speech-bubble {
+            color: black;
+            font-weight: bold;
+            font-size: 30px;
+            font-size: 2.5vw;
+            width: 60vw 60vh;
+            height: 35vh 35vw;
+            background: #9370F4;
+            position: absolute;
+            left: 30%;
+            top: 2.5%;
+            overflow: hidden;
+            border: solid;
+            border-collapse: separate;
+            -moz-border-radius: 10px; 
+            -webkit-border-radius: 10px; 
+            border-radius: 20px;
+        }
+        .button {
+            background-color: #ff3300;
+            border: black;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -48,9 +76,10 @@
     var timedOut = false;
 
     function initialize() {
+        reponse = document.getElementById("response");
         randomize();
         score = 0;
-        display(0);
+        display();
         flipped1 = false;
         flipped2 = false;
         flipped3 = false;
@@ -90,10 +119,8 @@
         }
         arr[randomNum] = tempNum2;
         arr[randomNum2] = tempNum;
-        // const tempNum2 = Math.floor(Math.random() * arr.length);
         x--;
         }
-        console.log(arr);
     }
 
     function revealImage(num) {
@@ -102,7 +129,6 @@
             if (flipCounter == 1 || flipCounter == 2) {
             timedOut = true;
             setTimeout(timedIn, 500);
-            console.log(timedOut);
             }
         if (flipCounter == 0) {
             prevNum = num;
@@ -279,32 +305,24 @@
         }
         
         if (flipCounter == 2) {
-            console.log("Previous Number: " + prevNum);
-            console.log("Current Number: " + num);
-            console.log("Card 1: " + arr[prevNum]);
-            console.log("Card 2: " + arr[num]);
             if ((isEven(arr[prevNum]) && arr[prevNum] - 1 == arr[num]) || (!isEven(arr[prevNum]) && arr[prevNum] + 1 == arr[num])) {
-                console.log("matching!");   
                 flipCounter = 0;
             }   else    {
                 flipCounter = 0;
                 setTimeout(flipCards, 400);
             }
-            
-            //use index of original array to match cards
-        
+                    
             flipCounter = 0;
         }  
 
-        console.log(timedOut);
         display();
     }
     }
 
     function timedIn() {
         timedOut = false;
-        console.log(timedOut);
     }
+
     function flipCards() {
         if (prevNum == 0|| tempNum3 == 0) {
                 let card1 = document.getElementById("grid1");
@@ -390,15 +408,87 @@
 
     function display() {
             scoreDisplay = document.getElementById("scoreDisplay");
-            scoreDisplay.innerHTML = "Score: " + score + " Flip Counter: " + flipCounter;
+            scoreDisplay.innerHTML = "Score: " + score;
+            if(score < 26){
+                response.innerHTML = "Possible high score!";
+                response.style.color = "green";
+            }
+            else if(score >= 26 && score < 40){
+                response.innerHTML = "Decent score?";
+                response.style.color = "yellow";
+            }
+            else{
+                response.innerHTML = "bruh you suck...";
+                response.style.color = "red";
+            }
     }
 
-//make a text bubble with toad welcoming them to click on any image, saying their score, and a comment based on their score
+    function resetGame() {
+        score = 0;
+        flipCounter = 0;
+        prevNum = 0;
+        tempNum3 = 0;
+        timedOut = false;
+        randomize();
+        flipped1 = false;
+        flipped2 = false;
+        flipped3 = false;
+        flipped4 = false;
+        flipped5 = false;
+        flipped6 = false;
+        flipped7 = false;
+        flipped8 = false;
+        flipped9 = false;
+        flipped10 = false;
+        flipped11 = false;
+        flipped12 = false;
+        flipped13 = false;
+        flipped14 = false;
+        flipped15 = false;
+        flipped16 = false;
+        let card1 = document.getElementById("grid1");
+        card1.src = "image1.gif";
+        let card2 = document.getElementById("grid2");
+        card2.src = "image1.gif";
+        let card3 = document.getElementById("grid3");
+        card3.src = "image1.gif";
+        let card4 = document.getElementById("grid4");
+        card4.src = "image1.gif";
+        let card5 = document.getElementById("grid5");
+        card5.src = "image1.gif";
+        let card6 = document.getElementById("grid6");
+        card6.src = "image1.gif";
+        let card7 = document.getElementById("grid7");
+        card7.src = "image1.gif";
+        let card8 = document.getElementById("grid8");
+        card8.src = "image1.gif";
+        let card9 = document.getElementById("grid9");
+        card9.src = "image1.gif";
+        let card10 = document.getElementById("grid10");
+        card10.src = "image1.gif";
+        let card11 = document.getElementById("grid11");
+        card11.src = "image1.gif";
+        let card12 = document.getElementById("grid12");
+        card12.src = "image1.gif";
+        let card13 = document.getElementById("grid13");
+        card13.src = "image1.gif";
+        let card14= document.getElementById("grid14");
+        card14.src = "image1.gif";
+        let card15 = document.getElementById("grid15");
+        card15.src = "image1.gif";
+        let card16 = document.getElementById("grid16");
+        card16.src = "image1.gif";
+
+        display();
+
+    }
+ 
 </script>
 <body onload = initialize();>
-    <h1> "Welcome to the Mushroom House</h1>
     <img id = "toad" src = "toad.png" height = 292px width = 191.8px>
-    <div id = scoreDisplay> Score: </div>
+    <div id = "speech-bubble">Welcome to the Mushroom House! Click on any image to flip it over and try to match all of them!<div id = scoreDisplay>Score: </div><div id = response></div></div>
+
+
     <div class="grid-container">
         <div class = "grid1" onclick = revealImage(0);><img id = "grid1" src = "image1.gif" height = 211px width= 211px></div>
         <div class = "grid1" onclick = revealImage(1);><img id = "grid2" src = "image1.gif" height = 211px width= 211px></div>
@@ -416,19 +506,11 @@
         <div class = "grid1" onclick = revealImage(13);><img id = "grid14" src = "image1.gif" height = 211px width= 211px></div>
         <div class = "grid1" onclick = revealImage(14);><img id = "grid15" src = "image1.gif" height = 211px width= 211px></div>
         <div class = "grid1" onclick = revealImage(15);><img id = "grid16" src = "image1.gif" height = 211px width= 211px></div>
-
-      </div>
-      <div class = "sidebar">
-        
       </div>
               
-      <!-- <img src = "fireflower.png" height = 211px width = 211px>
-      <img src = "iceflower.png" height = 211px width = 211px>
-      <img src = "star.png" height = 211px width = 211px>
-      <img src = "leaf.png" height = 211px width = 211px>
-      <img src = "lifemushroom.png" height = 211px width = 211px>
-      <img src = "penguin.png" height = 211px width = 211px>
-      <img src = "propeller.png" height = 211px width = 211px>
-       -->
+      <br>
+      <br>
+      <button class = "button" onclick = resetGame();> Reset Button </button>
+
 </body>
 </html>
