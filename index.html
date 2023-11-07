@@ -74,28 +74,29 @@
     var prevNum = 0;
     var tempNum3 = 0;
     var timedOut = false;
+    flipped1 = false;
+    flipped2 = false;
+    flipped3 = false;
+    flipped4 = false;
+    flipped5 = false;
+    flipped6 = false;
+    flipped7 = false;
+    flipped8 = false;
+    flipped9 = false;
+    flipped10 = false;
+    flipped11 = false;
+    flipped12 = false;
+    flipped13 = false;
+    flipped14 = false;
+    flipped15 = false;
+    flipped16 = false;
 
     function initialize() {
         reponse = document.getElementById("response");
         randomize();
         score = 0;
         display();
-        flipped1 = false;
-        flipped2 = false;
-        flipped3 = false;
-        flipped4 = false;
-        flipped5 = false;
-        flipped6 = false;
-        flipped7 = false;
-        flipped8 = false;
-        flipped9 = false;
-        flipped10 = false;
-        flipped11 = false;
-        flipped12 = false;
-        flipped13 = false;
-        flipped14 = false;
-        flipped15 = false;
-        flipped16 = false;
+
     
     }
     function isEven (num) {
@@ -408,6 +409,22 @@
 
     function display() {
             scoreDisplay = document.getElementById("scoreDisplay");
+            if (flipped1 && flipped2 && flipped3 && flipped4 && flipped5 && flipped6 && flipped7 && flipped8 && flipped9 && flipped10 && flipped11 && flipped12 && flipped13 && flipped14 && flipped15 && flipped16) {
+                scoreDisplay.innerHTML = "Final Score: " + score + "!";
+                scoreDisplay.style.color = "purple"
+                if(score < 26) {
+                response.innerHTML = "Congratulations on a high score!";
+                response.style.color = "green";
+                }
+                else if(score >= 26 && score < 40){
+                    response.innerHTML = "Decent score! Try again for max score?";
+                    response.style.color = "yellow";
+                }
+                else{
+                    response.innerHTML = "wow, just wow";
+                    response.style.color = "red";
+                }
+            }   else    {
             scoreDisplay.innerHTML = "Score: " + score;
             if(score < 26){
                 response.innerHTML = "Possible high score!";
@@ -421,6 +438,7 @@
                 response.innerHTML = "bruh you suck...";
                 response.style.color = "red";
             }
+        }
     }
 
     function resetGame() {
